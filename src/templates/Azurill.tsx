@@ -30,9 +30,16 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica-Bold',
     color: PALETTE.ink,
     letterSpacing: 0.3,
-    marginBottom: 3,
+    marginBottom: 9,
+    lineHeight: 1.15,
   },
-  label: { fontSize: 11, color: PALETTE.violet, fontFamily: 'Helvetica-Bold', marginBottom: 6 },
+  label: {
+    fontSize: 11,
+    color: PALETTE.violet,
+    fontFamily: 'Helvetica-Bold',
+    marginBottom: 9,
+    lineHeight: 1.35,
+  },
   contactRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',

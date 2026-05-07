@@ -282,6 +282,20 @@ function segmentJd(jdText: string): JdSegment[] {
   }
   if (current.text) segments.push(current);
   if (!segments.length) segments.push({ text: jdText, weight: 1.0 });
+
+  // If the JD has explicit Requirements/Qualifications headers, treat the
+  // pre-requirements intro paragraph as low-weight blurb (company description,
+  // role narrative) rather than scoring signal. This matches how ATS systems
+  // and human recruiters actually read JDs: the bullet list IS the spec.
+  const hasExplicitReq = segments.some((s) => s.weight >= 1.5);
+  if (hasExplicitReq) {
+    for (const seg of segments) {
+      if (seg.weight === 1.0) {
+        seg.weight = 0.25;
+        break;
+      }
+    }
+  }
   return segments;
 }
 
@@ -395,10 +409,8 @@ export function matchResumeToJd(resumeText: string, jdText: string): MatchResult
   const resumeWeighted = tfidfWeight(resumeFeatures, docs);
   const jdWeighted = tfidfWeight(jdFeatures, docs);
 
-  // Primary score: weighted JD coverage. "Of all the importance the JD signals,
-  // how much does the resume cover?" — directly interpretable, robust to
-  // asymmetric feature counts (which break raw cosine when one side has many
-  // bigrams/stems the other doesn't).
+  // Coverage: "of all the importance the JD signals, how much does the resume
+  // cover?" — directly interpretable, robust to asymmetric feature counts.
   let totalJdMass = 0;
   let coveredJdMass = 0;
   for (const [term, w] of jdWeighted) {
@@ -407,14 +419,37 @@ export function matchResumeToJd(resumeText: string, jdText: string): MatchResult
   }
   const coverage = totalJdMass === 0 ? 0 : coveredJdMass / totalJdMass;
 
-  // Cosine as secondary signal — useful for tie-breaking and corroboration
+  // Cosine kept as a secondary signal — but only as a *floor regularizer*.
+  // A resume that fully covers a JD's terms shouldn't be penalized just because
+  // it also contains a bunch of other relevant content (long resume vs. short
+  // JD). So cosine only drags the score down when coverage is low; once
+  // coverage hits 1.0, cosine no longer matters.
   const sim = cosineSimilarity(resumeWeighted, jdWeighted);
 
-  // Blend coverage (primary) with cosine (regularizer) so a resume that
-  // matches all JD terms but is otherwise irrelevant doesn't get a perfect
-  // score. 70/30 weighting tracks user intuition: "covered the JD" beats
-  // "vector-aligned with JD."
-  const score = Math.round((coverage * 0.7 + sim * 0.3) * 100);
+  // Score formula: ATS systems and recruiters filter by required-keyword
+  // coverage first. If the resume covers every required term, the candidate
+  // has met the bar — that's a 100. Below that, the score blends required
+  // coverage (heavy weight) with overall JD coverage and a small cosine
+  // contribution. The JD intro paragraph and "Nice to have" bigrams are
+  // bonus signal, not gating, so they don't drag a fully-qualified candidate
+  // below 100.
+  //
+  // Behavior:
+  // - 100% required coverage → 100 (you hit the bar)
+  // - 80% required + 70% overall → 77 (strong but not perfect)
+  // - 50% required + 50% overall → 50 (mid)
+  // - 0% required + 0% overall → 0
+  let reqHit = 0;
+  for (const t of requiredTerms) if (resumeFeatures.has(t)) reqHit += 1;
+  const requiredCoverageRatio = requiredTerms.size ? reqHit / requiredTerms.size : 1;
+
+  let score: number;
+  if (requiredCoverageRatio >= 1.0) {
+    score = 100;
+  } else {
+    const blended = requiredCoverageRatio * 0.65 + coverage * 0.25 + sim * 0.1;
+    score = Math.min(100, Math.round(blended * 100));
+  }
 
   // Surface JD terms by weighted importance, then split into matched/missing.
   const ranked = [...jdWeighted.entries()].sort((a, b) => b[1] - a[1]);
@@ -425,12 +460,8 @@ export function matchResumeToJd(resumeText: string, jdText: string): MatchResult
     else missingTerms.push(term);
   }
 
-  // Required-section coverage
-  let reqHit = 0;
-  for (const t of requiredTerms) if (resumeFeatures.has(t)) reqHit += 1;
-  const requiredCoverage = requiredTerms.size
-    ? Math.round((reqHit / requiredTerms.size) * 100)
-    : 100;
+  // Required-section coverage as a percent for display
+  const requiredCoverage = Math.round(requiredCoverageRatio * 100);
 
   // Critical gaps: required terms missing, ranked by JD weight.
   const criticalGaps = [...requiredTerms]

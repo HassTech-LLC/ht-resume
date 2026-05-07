@@ -6,7 +6,7 @@
     "email": "admin@htcalc.com",
     "phone": "+1-313-677-6768",
     "url": "https://hasstechapi.com",
-    "summary": "AI-native engineer building vertical-AI products end-to-end. Founder of HassTech LLC — seven production apps shipped across PropTech, FinTech, and HR/career-tech, all on Cloudflare's edge. Built a 10-provider LLM proxy with FinOps + observability (HT Meter), MCP servers, an ATS-aware retrieval system (TF-IDF + react-pdf), and a self-hostable AI Collaboration Operating Room. Methodology: scope, direct AI agents, review every diff, ship. Forward-deployed approach: scoped problem → working software in days, not quarters.",
+    "summary": "AI-native engineer with strong TypeScript and Python, LLM APIs, prompt engineering, and tool deploying production applications across cloud infrastructure. Comfortable with ambiguity, working directly with customer teams. Track record of shipping AI products end-to-end. Founder of HassTech LLC — seven production apps on Cloudflare Workers, Pages, D1, and KV, including MCP servers, agentic coding workflows, and developer tools. Forward-deployed approach: scoped problem → working software in days, not quarters.",
     "location": {
       "city": "",
       "region": "",
@@ -33,6 +33,7 @@
       "startDate": "2024-01",
       "summary": "Solo-founder building vertical-AI products on Cloudflare's edge. AI-native, forward-deployed engineer: scope the product, direct AI agents through implementation, review every diff, ship and iterate end-to-end. Output is the bar — seven production apps live.",
       "highlights": [
+        "Operate as forward-deployed engineer embedded directly with strategic customers — turn Claude into production AI applications, own end-to-end delivery: scope problem, prototype API integrations using Claude Code, ship to production, iterate from real usage.",
         "Shipped 7 production products across PropTech, FinTech, and HR/career-tech in under 18 months — all on free-tier infrastructure (Cloudflare Pages, Workers, D1, KV, Browser Rendering).",
         "Built a local-first FinOps + observability proxy (HT Meter) covering 10 LLM providers (OpenAI, Anthropic, Google, Groq, Mistral, Cohere, etc.) with token accounting, rate-limit visibility, and cost forecasting; companion local-first multi-model LLM workbench (LLM Studio) for offline experimentation.",
         "Built ATS-aware resume tooling (HT Career + HT Resume) using TF-IDF keyword matching against job descriptions and react-pdf programmatic exports, plus a JSON-Resume → multi-format auto-publish pipeline.",

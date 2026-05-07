@@ -34,13 +34,15 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica-Bold',
     color: '#ffffff',
     letterSpacing: 0.5,
-    marginBottom: 4,
+    marginBottom: 10,
+    lineHeight: 1.15,
   },
   bandLabel: {
     fontSize: 11.5,
     color: '#e9d8fd',
     fontFamily: 'Helvetica-Bold',
-    marginBottom: 12,
+    marginBottom: 14,
+    lineHeight: 1.35,
   },
   bandContactRow: {
     flexDirection: 'row',
