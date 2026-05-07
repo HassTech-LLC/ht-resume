@@ -74,6 +74,13 @@ function ResultView({ result }: { result: MatchResult }) {
   const tierColor =
     tier === 'strong' ? 'text-emerald-400' : tier === 'moderate' ? 'text-amber-400' : 'text-rose-400';
 
+  const reqColor =
+    result.requiredCoverage >= 70
+      ? 'text-emerald-400'
+      : result.requiredCoverage >= 45
+      ? 'text-amber-400'
+      : 'text-rose-400';
+
   return (
     <div className="mt-4 space-y-3">
       <div className="flex items-end justify-between">
@@ -82,26 +89,50 @@ function ResultView({ result }: { result: MatchResult }) {
           <div className={`text-3xl font-bold font-mono ${tierColor}`}>{result.score}</div>
           <div className="text-xs text-ht-muted capitalize">{tier} alignment</div>
         </div>
-        <div className="text-right text-[10px] text-ht-muted font-mono leading-tight">
-          <div>resume: {result.resumeTokenCount} tokens</div>
-          <div>jd: {result.jdTokenCount} tokens</div>
+        <div>
+          <div className="text-[10px] uppercase tracking-wider text-ht-muted">Required-section coverage</div>
+          <div className={`text-2xl font-bold font-mono ${reqColor}`}>{result.requiredCoverage}%</div>
+          <div className="text-[10px] text-ht-muted font-mono leading-tight">
+            {result.jdSegments} JD segment{result.jdSegments === 1 ? '' : 's'} · {result.resumeTokenCount}/{result.jdTokenCount} tokens
+          </div>
         </div>
       </div>
 
-      {result.missingKeywords.length ? (
-        <div>
-          <div className="text-[10px] uppercase tracking-wider text-ht-muted mb-1">
-            Missing — consider adding
+      {result.criticalGaps.length ? (
+        <div className="rounded-md border border-rose-400/40 bg-rose-400/5 p-2.5">
+          <div className="text-[10px] uppercase tracking-wider text-rose-300 mb-1.5 font-bold">
+            Critical gaps — required by the JD
           </div>
           <div className="flex flex-wrap gap-1.5">
-            {result.missingKeywords.map((kw) => (
+            {result.criticalGaps.map((kw) => (
               <span
                 key={kw}
-                className="rounded-md border border-rose-400/30 bg-rose-400/5 px-2 py-0.5 text-xs font-mono text-rose-300"
+                className="rounded-md bg-rose-400/15 px-2 py-0.5 text-xs font-mono text-rose-200"
               >
                 {kw}
               </span>
             ))}
+          </div>
+        </div>
+      ) : null}
+
+      {result.missingKeywords.length ? (
+        <div>
+          <div className="text-[10px] uppercase tracking-wider text-ht-muted mb-1">
+            Other missing keywords
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {result.missingKeywords
+              .filter((kw) => !result.criticalGaps.includes(kw))
+              .slice(0, 20)
+              .map((kw) => (
+                <span
+                  key={kw}
+                  className="rounded-md border border-amber-400/30 bg-amber-400/5 px-2 py-0.5 text-xs font-mono text-amber-300"
+                >
+                  {kw}
+                </span>
+              ))}
           </div>
         </div>
       ) : null}

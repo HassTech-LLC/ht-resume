@@ -2,10 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Hassan Algasid",
-    "label": "AI Solutions / Forward Deployed Operator — Vertical AI (PropTech, FinTech)",
+    "label": "AI Solutions / Forward Deployed Operator — Vertical AI (PropTech, FinTech, Career-Tech)",
     "email": "admin@htcalc.com",
+    "phone": "+1-313-677-6768",
     "url": "https://hasstechapi.com",
-    "summary": "Operator who directs AI to ship vertical-AI products end-to-end. Founder of HassTech LLC, currently shipping HT Calc, HassTech API, HTPdf, NeuronScope, HT Meter, HT Career, and HT Folio across PropTech and FinTech. Deep workflow with agentic coding tools — moves a brief to a deployed Cloudflare app in days, not quarters.",
+    "summary": "AI-native engineer building vertical-AI products end-to-end. Founder of HassTech LLC — seven production apps shipped across PropTech, FinTech, and HR/career-tech, all on Cloudflare's edge. Built a 10-provider LLM proxy with FinOps + observability (HT Meter), MCP servers, an ATS-aware retrieval system (TF-IDF + react-pdf), and a self-hostable AI Collaboration Operating Room. Methodology: scope, direct AI agents, review every diff, ship. Forward-deployed approach: scoped problem → working software in days, not quarters.",
     "location": {
       "city": "",
       "region": "",
@@ -14,8 +15,8 @@
     "profiles": [
       {
         "network": "GitHub",
-        "username": "algasid7e",
-        "url": "https://github.com/algasid7e"
+        "username": "HassTech-LLC",
+        "url": "https://github.com/HassTech-LLC"
       },
       {
         "network": "Website",
@@ -30,12 +31,22 @@
       "position": "Founder & Forward Deployed Operator",
       "url": "https://hasstechapi.com",
       "startDate": "2024-01",
-      "summary": "Solo-founder building a portfolio of vertical-AI products on Cloudflare's edge. Operate as a non-coder forward-deployed engineer: scope products, direct AI agents to implement, deploy and iterate.",
+      "summary": "Solo-founder building vertical-AI products on Cloudflare's edge. AI-native, forward-deployed engineer: scope the product, direct AI agents through implementation, review every diff, ship and iterate end-to-end. Output is the bar — seven production apps live.",
       "highlights": [
-        "Shipped 7 production products across PropTech and FinTech in under 18 months — all on free-tier infrastructure (Cloudflare Pages, Workers, D1, KV, Pages Functions).",
-        "Run an agent-first development workflow with Claude Code, Cursor, and custom MCP servers — including a local-first AI usage proxy that meters spend across providers in real time.",
-        "Built reusable infrastructure (auth, basic-auth gating, contact pipeline, brand kit) that any new HassTech product inherits on day one."
+        "Shipped 7 production products across PropTech, FinTech, and HR/career-tech in under 18 months — all on free-tier infrastructure (Cloudflare Pages, Workers, D1, KV, Browser Rendering).",
+        "Built a local-first FinOps + observability proxy (HT Meter) covering 10 LLM providers (OpenAI, Anthropic, Google, Groq, Mistral, Cohere, etc.) with token accounting, rate-limit visibility, and cost forecasting; companion local-first multi-model LLM workbench (LLM Studio) for offline experimentation.",
+        "Built ATS-aware resume tooling (HT Career + HT Resume) using TF-IDF keyword matching against job descriptions and react-pdf programmatic exports, plus a JSON-Resume → multi-format auto-publish pipeline.",
+        "Run an agent-first development workflow with Claude Code, Cursor, and custom MCP servers (KeePassXC bridge); designed a self-hostable AI Collaboration Operating Room control plane unifying humans + agents + audit trails.",
+        "Authored an official PHP SDK for HTPdf published on Packagist (PSR-18, typed client, retries, streaming) — broadening adoption across LAMP stacks.",
+        "Built reusable infrastructure (auth, basic-auth gating, Turnstile-validated contact pipeline, brand kit) that any new HassTech product inherits on day one."
       ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Self-taught engineer. Production portfolio at github.com/HassTech-LLC.",
+      "area": "Some College Coursework",
+      "studyType": ""
     }
   ],
   "projects": [
@@ -50,32 +61,34 @@
       "keywords": ["TypeScript", "React", "PropTech", "Real Estate", "FinTech", "Cloudflare Pages"]
     },
     {
-      "name": "HassTech API",
-      "description": "Suite hub and public API surface at hasstechapi.com — landing, products grid, contact pipeline.",
+      "name": "HassTech Suite Hub",
+      "description": "Marketing and discovery hub for the HassTech product suite at hasstechapi.com.",
       "url": "https://hasstechapi.com",
       "highlights": [
-        "Astro static site with a Cloudflare Worker contact endpoint that validates Turnstile and files GitHub issues for inbound leads.",
-        "Centralized brand and meta layer for every HassTech product."
+        "Astro static site on Cloudflare Pages with a Cloudflare Worker contact endpoint that validates Turnstile and files GitHub issues for inbound leads.",
+        "Centralized brand kit, design tokens, and meta layer reused across every HassTech product."
       ],
-      "keywords": ["Astro", "Cloudflare Workers", "Turnstile", "TypeScript"]
+      "keywords": ["Astro", "Cloudflare Workers", "Cloudflare Pages", "Turnstile", "TypeScript"]
     },
     {
       "name": "HTPdf / HTPrint API",
-      "description": "Edge-rendered PDF generation API with a brand-kit system for white-label PDF output.",
-      "url": "https://hasstechapi.com",
+      "description": "High-throughput HTML→PDF API at the edge with a brand-kit system for white-label, multi-tenant PDF output.",
+      "url": "https://htpdf.net",
       "highlights": [
-        "Cloudflare Workers + Browser Rendering for sub-second PDF synthesis.",
-        "Brand kit layer turns one input into branded PDFs for any tenant."
+        "Cloudflare Workers + Browser Rendering for sub-second PDF synthesis at the edge.",
+        "Brand kit layer turns one input into branded PDFs for any tenant.",
+        "Official PHP SDK published on Packagist (PSR-18, typed client, retries, streaming)."
       ],
-      "keywords": ["Cloudflare Workers", "PDF", "Browser Rendering", "TypeScript"]
+      "keywords": ["Cloudflare Workers", "Browser Rendering", "Hono", "TypeScript", "PHP 8.1+", "PSR-18"]
     },
     {
       "name": "NeuronScope",
-      "description": "Visual scope for inspecting neural-network and agent behavior in real time.",
+      "description": "Mechanistic-interpretability suite for probing transformer internals and agent decision surfaces (research-adjacent).",
       "highlights": [
-        "Side-project tool for understanding model decision surfaces during product development."
+        "Live 3D weight visualization via React + Three.js / R3F.",
+        "Three-stage LLM Council (propose / critique / synthesize) for layered model interpretation."
       ],
-      "keywords": ["TypeScript", "AI", "Visualization"]
+      "keywords": ["Mechanistic interpretability", "Transformer internals", "LLM Council", "R3F / Three.js", "TypeScript", "AI safety"]
     },
     {
       "name": "HT Meter",
@@ -101,58 +114,127 @@
       "description": "Auto-generated developer portfolio at ht-folio.pages.dev — drop a GitHub username, get a deployable portfolio site.",
       "url": "https://ht-folio.pages.dev",
       "highlights": [
-        "Astro + Cloudflare Pages + KV. Tier 2 private-repo showcase live for select users.",
+        "Astro + Cloudflare Pages + KV; safely surfaces private-repo work via a metadata layer with no source disclosure.",
         "Generated portfolios pull live README, language stats, and contribution graphs from the GitHub API."
       ],
-      "keywords": ["Astro", "Cloudflare Pages", "KV", "GitHub API"]
+      "keywords": ["Astro", "Cloudflare Pages", "Cloudflare KV", "GitHub API", "TypeScript"]
     }
   ],
   "skills": [
     {
-      "name": "Vertical AI Product Building",
-      "level": "Operator",
-      "keywords": ["PropTech", "FinTech", "Career Tech", "PDF Synthesis", "AI Observability"]
-    },
-    {
-      "name": "Agentic Development",
-      "level": "Daily",
+      "name": "AI / LLM Engineering",
+      "level": "Production",
       "keywords": [
-        "Claude Code",
-        "Cursor",
-        "MCP Servers",
-        "Anthropic SDK",
-        "Prompt Engineering",
-        "Tool Design"
+        "LLM application development",
+        "Multi-provider LLM integration (10 providers)",
+        "Prompt engineering & evaluation",
+        "RAG / IR fundamentals (TF-IDF)",
+        "LLMOps & AI observability",
+        "AI FinOps & cost forecasting",
+        "Local-first / on-device AI",
+        "Mechanistic interpretability (research-adjacent)",
+        "AI safety patterns"
       ]
     },
     {
-      "name": "Edge Stack",
+      "name": "Agents & MCP",
       "level": "Production",
       "keywords": [
-        "Cloudflare Pages",
+        "Model Context Protocol (server + client)",
+        "Agent orchestration",
+        "Tool-use / function-calling architecture",
+        "Human-in-the-loop AI",
+        "Control planes",
+        "Claude Code SDK / skills / hooks / sub-agents",
+        "Anthropic SDK",
+        "Forward-deployed AI patterns"
+      ]
+    },
+    {
+      "name": "Edge & Cloud (Cloudflare)",
+      "level": "Production",
+      "keywords": [
         "Cloudflare Workers",
-        "D1",
-        "KV",
-        "R2",
+        "Cloudflare Pages",
+        "Cloudflare D1",
+        "Cloudflare KV",
+        "Cloudflare R2",
         "Browser Rendering",
-        "Turnstile",
+        "Hono framework",
+        "Multi-tenant API platforms",
+        "Edge security (Turnstile)",
         "Wrangler"
       ]
     },
     {
-      "name": "Web Stack",
-      "level": "Working",
-      "keywords": ["TypeScript", "Astro", "Next.js", "React", "Tailwind", "Node.js"]
+      "name": "Backend & APIs",
+      "level": "Production",
+      "keywords": [
+        "REST API design",
+        "SDK authoring (PSR-18 PHP, on Packagist)",
+        "Streaming + retries",
+        "Webhooks",
+        "GitHub API integration"
+      ]
     },
     {
-      "name": "Operator Skills",
-      "level": "Strong",
+      "name": "Frontend",
+      "level": "Production",
       "keywords": [
-        "Product scoping",
-        "Free-tier infra design",
-        "Brand systems",
-        "Founder ops",
-        "Solo-founder execution"
+        "React",
+        "Next.js",
+        "Astro",
+        "Vite",
+        "Tailwind",
+        "react-pdf",
+        "TypeScript-first",
+        "Three.js / R3F"
+      ]
+    },
+    {
+      "name": "Languages",
+      "level": "Production",
+      "keywords": [
+        "TypeScript",
+        "Python",
+        "JavaScript / Node.js",
+        "PHP 8.1+",
+        "SQL",
+        "PowerShell",
+        "Bash"
+      ]
+    },
+    {
+      "name": "Data & IR",
+      "level": "Production",
+      "keywords": [
+        "PostgreSQL / Supabase",
+        "SQLite / D1",
+        "TF-IDF retrieval",
+        "Schema design",
+        "Edge databases"
+      ]
+    },
+    {
+      "name": "DevOps & Tooling",
+      "level": "Production",
+      "keywords": [
+        "GitHub Actions",
+        "Custom CLI tooling (RTK)",
+        "Local-first observability",
+        "Secrets management (KeePassXC, EFS+ACL vault)",
+        "Knowledge automation (Obsidian wiki)"
+      ]
+    },
+    {
+      "name": "Vertical Domains",
+      "level": "Operator",
+      "keywords": [
+        "PropTech (mortgage / real estate)",
+        "FinTech adjacency",
+        "HR / Career-tech",
+        "Document automation",
+        "Developer tooling"
       ]
     }
   ],

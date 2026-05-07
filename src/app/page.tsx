@@ -31,7 +31,7 @@ export default function Home() {
               hasstechapi.com
             </a>
             <a
-              href="https://github.com/algasid7e/ht-resume"
+              href="https://github.com/HassTech-LLC/ht-resume"
               className="text-ht-muted hover:text-ht-text transition"
               target="_blank"
               rel="noreferrer"

@@ -42,9 +42,10 @@ function loadPrefs(): Prefs {
     const order = (parsed.order ?? DEFAULT_SECTION_ORDER).filter((k): k is SectionKey =>
       (ALL_SECTIONS as string[]).includes(k as string)
     );
+    const validIds: TemplateId[] = ['modern', 'minimal', 'azurill', 'bronzor', 'onyx', 'ditto'];
     const templateId: TemplateId =
-      parsed.templateId === 'modern' || parsed.templateId === 'minimal'
-        ? parsed.templateId
+      parsed.templateId && (validIds as string[]).includes(parsed.templateId as string)
+        ? (parsed.templateId as TemplateId)
         : 'modern';
     return { templateId, order: order.length ? order : DEFAULT_SECTION_ORDER };
   } catch {
