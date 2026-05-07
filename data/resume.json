@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Hassan Algasid",
+    "label": "AI Solutions / Forward Deployed Operator — Vertical AI (PropTech, FinTech)",
+    "email": "admin@htcalc.com",
+    "url": "https://hasstechapi.com",
+    "summary": "Operator who directs AI to ship vertical-AI products end-to-end. Founder of HassTech LLC, currently shipping HT Calc, HassTech API, HTPdf, NeuronScope, HT Meter, HT Career, and HT Folio across PropTech and FinTech. Deep workflow with agentic coding tools — moves a brief to a deployed Cloudflare app in days, not quarters.",
+    "location": {
+      "city": "",
+      "region": "",
+      "countryCode": "US"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "algasid7e",
+        "url": "https://github.com/algasid7e"
+      },
+      {
+        "network": "Website",
+        "username": "hasstechapi",
+        "url": "https://hasstechapi.com"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "HassTech LLC",
+      "position": "Founder & Forward Deployed Operator",
+      "url": "https://hasstechapi.com",
+      "startDate": "2024-01",
+      "summary": "Solo-founder building a portfolio of vertical-AI products on Cloudflare's edge. Operate as a non-coder forward-deployed engineer: scope products, direct AI agents to implement, deploy and iterate.",
+      "highlights": [
+        "Shipped 7 production products across PropTech and FinTech in under 18 months — all on free-tier infrastructure (Cloudflare Pages, Workers, D1, KV, Pages Functions).",
+        "Run an agent-first development workflow with Claude Code, Cursor, and custom MCP servers — including a local-first AI usage proxy that meters spend across providers in real time.",
+        "Built reusable infrastructure (auth, basic-auth gating, contact pipeline, brand kit) that any new HassTech product inherits on day one."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "HT Calc",
+      "description": "Mortgage and real-estate calculator suite — interactive scenarios, amortization, affordability, and investor cash-flow modeling.",
+      "url": "https://htcalc.com",
+      "highlights": [
+        "Original HassTech product. Edge-rendered, no backend dependency — works fully offline after first load.",
+        "Drives the brand-kit and auth conventions reused across the rest of the suite."
+      ],
+      "keywords": ["TypeScript", "React", "PropTech", "Real Estate", "FinTech", "Cloudflare Pages"]
+    },
+    {
+      "name": "HassTech API",
+      "description": "Suite hub and public API surface at hasstechapi.com — landing, products grid, contact pipeline.",
+      "url": "https://hasstechapi.com",
+      "highlights": [
+        "Astro static site with a Cloudflare Worker contact endpoint that validates Turnstile and files GitHub issues for inbound leads.",
+        "Centralized brand and meta layer for every HassTech product."
+      ],
+      "keywords": ["Astro", "Cloudflare Workers", "Turnstile", "TypeScript"]
+    },
+    {
+      "name": "HTPdf / HTPrint API",
+      "description": "Edge-rendered PDF generation API with a brand-kit system for white-label PDF output.",
+      "url": "https://hasstechapi.com",
+      "highlights": [
+        "Cloudflare Workers + Browser Rendering for sub-second PDF synthesis.",
+        "Brand kit layer turns one input into branded PDFs for any tenant."
+      ],
+      "keywords": ["Cloudflare Workers", "PDF", "Browser Rendering", "TypeScript"]
+    },
+    {
+      "name": "NeuronScope",
+      "description": "Visual scope for inspecting neural-network and agent behavior in real time.",
+      "highlights": [
+        "Side-project tool for understanding model decision surfaces during product development."
+      ],
+      "keywords": ["TypeScript", "AI", "Visualization"]
+    },
+    {
+      "name": "HT Meter",
+      "description": "Local-first AI usage proxy and dashboard. Meters spend, requests, and tokens across providers without sending data off-machine.",
+      "highlights": [
+        "Runs on localhost:8080. CLI: `ht-meter start`. SQLite-backed.",
+        "Phase 0 shipped to internal use; Phase 1 adds shared team views over Cloudflare Tunnel."
+      ],
+      "keywords": ["TypeScript", "SQLite", "AI Observability", "Local-First"]
+    },
+    {
+      "name": "HT Career",
+      "description": "Free AI resume inspector and career concierge at career.hasstechapi.com.",
+      "url": "https://career.hasstechapi.com",
+      "highlights": [
+        "D1 + Groq stack — sub-second resume scoring and rewrite suggestions.",
+        "Private-beta basic-auth for early users."
+      ],
+      "keywords": ["Cloudflare D1", "Groq", "AI", "Career Tech"]
+    },
+    {
+      "name": "HT Folio",
+      "description": "Auto-generated developer portfolio at ht-folio.pages.dev — drop a GitHub username, get a deployable portfolio site.",
+      "url": "https://ht-folio.pages.dev",
+      "highlights": [
+        "Astro + Cloudflare Pages + KV. Tier 2 private-repo showcase live for select users.",
+        "Generated portfolios pull live README, language stats, and contribution graphs from the GitHub API."
+      ],
+      "keywords": ["Astro", "Cloudflare Pages", "KV", "GitHub API"]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Vertical AI Product Building",
+      "level": "Operator",
+      "keywords": ["PropTech", "FinTech", "Career Tech", "PDF Synthesis", "AI Observability"]
+    },
+    {
+      "name": "Agentic Development",
+      "level": "Daily",
+      "keywords": [
+        "Claude Code",
+        "Cursor",
+        "MCP Servers",
+        "Anthropic SDK",
+        "Prompt Engineering",
+        "Tool Design"
+      ]
+    },
+    {
+      "name": "Edge Stack",
+      "level": "Production",
+      "keywords": [
+        "Cloudflare Pages",
+        "Cloudflare Workers",
+        "D1",
+        "KV",
+        "R2",
+        "Browser Rendering",
+        "Turnstile",
+        "Wrangler"
+      ]
+    },
+    {
+      "name": "Web Stack",
+      "level": "Working",
+      "keywords": ["TypeScript", "Astro", "Next.js", "React", "Tailwind", "Node.js"]
+    },
+    {
+      "name": "Operator Skills",
+      "level": "Strong",
+      "keywords": [
+        "Product scoping",
+        "Free-tier infra design",
+        "Brand systems",
+        "Founder ops",
+        "Solo-founder execution"
+      ]
+    }
+  ],
+  "meta": {
+    "canonical": "https://ht-resume.pages.dev",
+    "version": "0.1.0",
+    "lastModified": "2026-05-07"
+  }
+}

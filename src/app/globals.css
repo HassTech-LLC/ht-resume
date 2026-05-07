@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme tokens. RGB triplets so Tailwind's <alpha-value> works.
+   Mirrors HT Folio's brand exactly. */
+html.dark {
+  --ht-bg:      10 14 26;     /* #0a0e1a */
+  --ht-surface: 15 21 38;     /* #0f1526 */
+  --ht-card:    19 25 41;     /* #131929 */
+  --ht-border:  30 45 74;     /* #1e2d4a */
+  --ht-cyan:    6 182 212;    /* #06b6d4 */
+  --ht-violet:  139 92 246;   /* #8b5cf6 */
+  --ht-text:    226 232 240;
+  --ht-muted:   100 116 139;
+  --ht-subtle:  148 163 184;
+  color-scheme: dark;
+}
+html.light {
+  --ht-bg:      248 250 252;
+  --ht-surface: 255 255 255;
+  --ht-card:    255 255 255;
+  --ht-border:  226 232 240;
+  --ht-cyan:    8 145 178;
+  --ht-violet:  124 58 237;
+  --ht-text:    15 23 42;
+  --ht-muted:   71 85 105;
+  --ht-subtle:  51 65 85;
+  color-scheme: light;
+}
+html:not(.dark):not(.light) {
+  --ht-bg:      10 14 26;
+  --ht-surface: 15 21 38;
+  --ht-card:    19 25 41;
+  --ht-border:  30 45 74;
+  --ht-cyan:    6 182 212;
+  --ht-violet:  139 92 246;
+  --ht-text:    226 232 240;
+  --ht-muted:   100 116 139;
+  --ht-subtle:  148 163 184;
+  color-scheme: dark;
+}
+
+html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; max-width: 100%; }
+body { background: rgb(var(--ht-bg)); color: rgb(var(--ht-text)); }
+
+.gradient-text {
+  background: linear-gradient(90deg, rgb(var(--ht-cyan)), rgb(var(--ht-violet)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-border {
+  border-image: linear-gradient(135deg, rgb(var(--ht-cyan)), rgb(var(--ht-violet))) 1;
+}
+
+.glass {
+  background: rgb(var(--ht-card) / 0.65);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(var(--ht-border) / 0.6);
+}
+
+/* Atmospheric blobs */
+.atmosphere::before,
+.atmosphere::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.atmosphere::before {
+  background: radial-gradient(60rem 30rem at 15% -10%, rgb(var(--ht-cyan) / 0.12), transparent 60%);
+}
+.atmosphere::after {
+  background: radial-gradient(50rem 28rem at 95% 110%, rgb(var(--ht-violet) / 0.12), transparent 60%);
+}
