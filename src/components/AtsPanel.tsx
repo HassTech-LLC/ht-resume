@@ -86,7 +86,9 @@ function ResultView({ result }: { result: MatchResult }) {
       <div className="flex items-end justify-between">
         <div>
           <div className="text-[10px] uppercase tracking-wider text-ht-muted">Match score</div>
-          <div className={`text-3xl font-bold font-mono ${tierColor}`}>{result.score}</div>
+          <div className={`text-3xl font-bold font-mono ${tierColor}`}>
+            {result.score}<span className="text-xl">%</span>
+          </div>
           <div className="text-xs text-ht-muted capitalize">{tier} alignment</div>
         </div>
         <div>
